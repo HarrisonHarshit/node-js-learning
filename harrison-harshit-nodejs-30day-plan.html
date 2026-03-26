@@ -1,0 +1,3712 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev. Harshit | 30-Day Node.js Mastery Plan</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f6f2;
+        --surface: #ffffff;
+        --surface2: #f0efe9;
+        --border: #e2e0d8;
+        --text-primary: #1a1917;
+        --text-secondary: #5c5a54;
+        --text-muted: #9e9c96;
+        --accent: #2563eb;
+        --accent-soft: #eff4ff;
+        --accent-border: #bfcffd;
+        --green: #16a34a;
+        --green-soft: #f0fdf4;
+        --green-border: #bbf7d0;
+        --amber: #d97706;
+        --amber-soft: #fffbeb;
+        --red: #dc2626;
+        --week1: #7c3aed;
+        --week2: #0891b2;
+        --week3: #16a34a;
+        --week4: #d97706;
+        --week1-soft: #f5f3ff;
+        --week2-soft: #ecfeff;
+        --week3-soft: #f0fdf4;
+        --week4-soft: #fffbeb;
+        --shadow-sm:
+          0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --shadow-md:
+          0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+        --shadow-lg:
+          0 12px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+        --radius: 8px;
+        --radius-lg: 12px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text-primary);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* ─── HEADER ─── */
+      .doc-header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 0 48px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .doc-header-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+        gap: 16px;
+      }
+
+      .doc-title-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .text-white {
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .doc-icon {
+        width: 72px;
+        height: 32px;
+        background: var(--green);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      .doc-title-text {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .doc-title-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-sm {
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        transition: all 0.15s;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--text-secondary);
+        border: 1px solid var(--border);
+      }
+      .btn-ghost:hover {
+        background: var(--surface2);
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+      }
+      .btn-primary:hover {
+        background: #1d4ed8;
+      }
+
+      .progress-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--accent-soft);
+        border: 1px solid var(--accent-border);
+        border-radius: 20px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      /* ─── LAYOUT ─── */
+      .page-wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 48px 80px;
+      }
+
+      /* ─── HERO ─── */
+      .hero {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 40px 48px;
+        margin-bottom: 32px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle at top right,
+          rgba(37, 99, 235, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--accent-soft);
+        border: 1px solid var(--accent-border);
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .hero-desc {
+        font-size: 15px;
+        color: var(--text-secondary);
+        max-width: 560px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+      }
+
+      .hero-meta {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .meta-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+      }
+
+      .meta-value {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      /* ─── PROGRESS BAR ─── */
+      .progress-section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 24px 32px;
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .progress-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .progress-pct {
+        font-family: "DM Mono", monospace;
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--accent);
+      }
+
+      .progress-bar-track {
+        height: 8px;
+        background: var(--surface2);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent) 0%, #60a5fa 100%);
+        border-radius: 4px;
+        transition: width 0.5s ease;
+      }
+
+      .progress-weeks {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .week-chip {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .week-chip-label {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .week-chip-bar {
+        height: 4px;
+        border-radius: 2px;
+        overflow: hidden;
+        background: var(--surface2);
+      }
+
+      .week-chip-fill {
+        height: 100%;
+        border-radius: 2px;
+        transition: width 0.5s ease;
+      }
+
+      .w1 {
+        background: var(--week1);
+      }
+      .w2 {
+        background: var(--week2);
+      }
+      .w3 {
+        background: var(--week3);
+      }
+      .w4 {
+        background: var(--week4);
+      }
+
+      /* ─── SECTION TITLE ─── */
+      .section-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 22px;
+        font-weight: 400;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* ─── WEEK BLOCK ─── */
+      .week-block {
+        margin-bottom: 40px;
+      }
+
+      .week-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .week-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .week-badge.w1 {
+        background: var(--week1-soft);
+        color: var(--week1);
+        border: 1px solid #c4b5fd;
+      }
+      .week-badge.w2 {
+        background: var(--week2-soft);
+        color: var(--week2);
+        border: 1px solid #a5f3fc;
+      }
+      .week-badge.w3 {
+        background: var(--week3-soft);
+        color: var(--week3);
+        border: 1px solid var(--green-border);
+      }
+      .week-badge.w4 {
+        background: var(--week4-soft);
+        color: var(--week4);
+        border: 1px solid #fde68a;
+      }
+
+      .week-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 20px;
+        font-weight: 400;
+        color: var(--text-primary);
+      }
+
+      .week-progress-text {
+        margin-left: auto;
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* ─── DAY CARD ─── */
+      .day-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        margin-bottom: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: box-shadow 0.2s;
+      }
+
+      .day-card:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      .day-card.completed {
+        border-color: var(--green-border);
+        background: var(--green-soft);
+      }
+
+      .day-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 20px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .day-checkbox {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--border);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all 0.15s;
+        background: white;
+        cursor: pointer;
+      }
+
+      .day-checkbox:hover {
+        border-color: var(--accent);
+      }
+
+      .day-card.completed .day-checkbox {
+        background: var(--green);
+        border-color: var(--green);
+        color: white;
+      }
+
+      .day-checkbox svg {
+        display: none;
+        width: 12px;
+        height: 12px;
+      }
+
+      .day-card.completed .day-checkbox svg {
+        display: block;
+      }
+
+      .day-number {
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text-muted);
+        min-width: 40px;
+      }
+
+      .day-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .day-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 2px;
+      }
+
+      .day-card.completed .day-title {
+        color: var(--green);
+        text-decoration: line-through;
+        text-decoration-color: var(--green-border);
+      }
+
+      .day-subtitle {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .day-tags {
+        display: flex;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .tag {
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 600;
+        border: 1px solid;
+      }
+
+      .tag-concept {
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-color: var(--accent-border);
+      }
+      .tag-project {
+        background: #fff7ed;
+        color: #c2410c;
+        border-color: #fed7aa;
+      }
+      .tag-practice {
+        background: var(--green-soft);
+        color: var(--green);
+        border-color: var(--green-border);
+      }
+      .tag-advanced {
+        background: #fdf4ff;
+        color: #9333ea;
+        border-color: #e9d5ff;
+      }
+
+      .day-expand-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-muted);
+        padding: 4px;
+        border-radius: 4px;
+        transition: all 0.15s;
+        flex-shrink: 0;
+      }
+
+      .day-expand-btn:hover {
+        background: var(--surface2);
+        color: var(--text-primary);
+      }
+
+      .day-expand-btn svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.2s;
+      }
+
+      .day-card.open .day-expand-btn svg {
+        transform: rotate(180deg);
+      }
+
+      /* ─── DAY BODY ─── */
+      .day-body {
+        display: none;
+        border-top: 1px solid var(--border);
+        padding: 20px 24px 20px 74px;
+      }
+
+      .day-card.open .day-body {
+        display: block;
+      }
+
+      .day-body-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 16px;
+      }
+
+      .body-section-title {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .topic-list {
+        list-style: none;
+      }
+
+      .topic-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 4px 0;
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
+
+      .topic-list li::before {
+        content: "→";
+        color: var(--accent);
+        font-size: 11px;
+        margin-top: 2px;
+        flex-shrink: 0;
+        font-family: "DM Mono", monospace;
+      }
+
+      .resource-list {
+        list-style: none;
+      }
+
+      .resource-list li {
+        padding: 5px 0;
+      }
+
+      .resource-list a {
+        font-size: 13px;
+        color: var(--accent);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+        transition: color 0.15s;
+      }
+
+      .resource-list a:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+      }
+
+      .resource-list a::before {
+        content: "↗";
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        opacity: 0.7;
+      }
+
+      .goal-box {
+        background: var(--accent-soft);
+        border: 1px solid var(--accent-border);
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        font-size: 13px;
+        color: var(--accent);
+        font-weight: 500;
+        margin-top: 4px;
+      }
+
+      .goal-box span {
+        font-weight: 700;
+      }
+
+      .time-estimate {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-family: "DM Mono", monospace;
+        font-size: 11px;
+        color: var(--text-muted);
+        background: var(--surface2);
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin-top: 8px;
+      }
+
+      /* ─── RESOURCES PANEL ─── */
+      .resources-section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 28px 32px;
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .resource-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .resource-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        background: var(--bg);
+        transition: all 0.15s;
+      }
+
+      .resource-card:hover {
+        border-color: var(--accent-border);
+        background: var(--accent-soft);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .resource-card-icon {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      .resource-card-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .resource-card-desc {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+        line-height: 1.5;
+      }
+
+      .resource-card a {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .resource-card a:hover {
+        text-decoration: underline;
+      }
+
+      /* ─── FOOTER ─── */
+      .doc-footer {
+        border-top: 1px solid var(--border);
+        padding-top: 24px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 700px) {
+        .page-wrapper {
+          padding: 24px 20px 60px;
+        }
+        .doc-header {
+          padding: 0 16px;
+          height: auto;
+        }
+        .doc-header-inner {
+          flex-wrap: wrap;
+          height: auto;
+          padding: 10px 0;
+          gap: 8px;
+        }
+        .doc-title-bar {
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .doc-title-text {
+          font-size: 13px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .doc-title-sub {
+          display: none;
+        }
+        .header-actions {
+          flex: 1 1 100%;
+          justify-content: flex-end;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .doc-footer {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 4px;
+        }
+        .hero {
+          padding: 28px 24px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .day-body-grid {
+          grid-template-columns: 1fr;
+        }
+        .resource-grid {
+          grid-template-columns: 1fr;
+        }
+        .progress-weeks {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .day-body {
+          padding-left: 20px;
+        }
+        .day-tags {
+          display: none;
+        }
+      }
+
+      /* ─── ANIMATIONS ─── */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .day-card {
+        animation: fadeIn 0.3s ease both;
+      }
+      .day-card:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .day-card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .day-card:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      .day-card:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      .day-card:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+      .day-card:nth-child(6) {
+        animation-delay: 0.3s;
+      }
+      .day-card:nth-child(7) {
+        animation-delay: 0.35s;
+      }
+
+      .completed-stamp {
+        display: none;
+        background: var(--green-soft);
+        border: 1px solid var(--green-border);
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--green);
+        font-family: "DM Mono", monospace;
+      }
+
+      .day-card.completed .completed-stamp {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ─── STICKY HEADER ─── -->
+    <header class="doc-header">
+      <div class="doc-header-inner">
+        <div class="doc-title-bar">
+          <div class="doc-icon"><span class="text-white">Node.js</span></div>
+          <div>
+            <div class="doc-title-text">Dev. Harshit | Node.js Mastery — 30-Day Plan</div>
+            <div class="doc-title-sub">
+              Frontend → Fullstack · Personal Learning Doc
+            </div>
+          </div>
+        </div>
+        <div class="header-actions">
+          <div class="progress-chip">
+            <span>⬤</span>
+            <span id="header-progress">0 / 30 days</span>
+          </div>
+          <button class="btn-sm btn-ghost" onclick="resetAll()">Reset</button>
+          <button class="btn-sm btn-primary" onclick="expandAll()">
+            Expand All
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ─── PAGE ─── -->
+    <div class="page-wrapper">
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-tag">📋 Learning Document · Node.js</div>
+        <h1>Welcome Back <em>Harshit!</em> <br/>Your <em>30-Day</em> Node.js Backend Blueprint</h1>
+        <p class="hero-desc">
+          Tailored for a frontend engineer with 5 years of experience. This plan
+          takes you from zero to confident backend developer — covering Node.js
+          fundamentals, REST APIs, databases, authentication, and real-world
+          architecture patterns.
+        </p>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <span class="meta-label">Duration</span>
+            <span class="meta-value">30 Days</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Daily Effort</span>
+            <span class="meta-value">2–3 Hours</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Prerequisites</span>
+            <span class="meta-value">JavaScript ES6+</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Outcome</span>
+            <span class="meta-value">REST API + Portfolio Project</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Created</span>
+            <span class="meta-value" id="created-date">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <div class="progress-section">
+        <div class="progress-header">
+          <div class="progress-title">Overall Progress</div>
+          <div class="progress-pct" id="pct-display">0%</div>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="main-bar" style="width: 0%"></div>
+        </div>
+        <div class="progress-weeks">
+          <div class="week-chip">
+            <div class="week-chip-label">Week 1 — Foundations</div>
+            <div class="week-chip-bar">
+              <div
+                class="week-chip-fill w1"
+                id="w1-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="week-chip">
+            <div class="week-chip-label">Week 2 — APIs & Data</div>
+            <div class="week-chip-bar">
+              <div
+                class="week-chip-fill w2"
+                id="w2-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="week-chip">
+            <div class="week-chip-label">Week 3 — Auth & Advanced</div>
+            <div class="week-chip-bar">
+              <div
+                class="week-chip-fill w3"
+                id="w3-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="week-chip">
+            <div class="week-chip-label">Week 4 — Capstone</div>
+            <div class="week-chip-bar">
+              <div
+                class="week-chip-fill w4"
+                id="w4-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════ WEEK 1 ════════════════════════════════ -->
+      <div class="week-block" id="week-1">
+        <div class="week-header">
+          <span class="week-badge w1">Week 1</span>
+          <h2 class="week-title">Foundations — How Node.js Really Works</h2>
+          <span class="week-progress-text" id="w1-text">0/7</span>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="day-card" id="day-1">
+          <div class="day-header" onclick="toggleDay(1)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(1);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 01</div>
+            <div class="day-info">
+              <div class="day-title">Node.js Setup & The Mental Model</div>
+              <div class="day-subtitle">
+                What is Node, V8, libuv · Installation · npm basics
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>What is Node.js? Why non-blocking I/O?</li>
+                  <li>V8 engine + libuv event loop overview</li>
+                  <li>Install Node via nvm (Node Version Manager)</li>
+                  <li>npm init, package.json structure</li>
+                  <li>
+                    CommonJS (require/module.exports) vs ESModules
+                    (import/export)
+                  </li>
+                  <li>Running first .js file with node</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://nodejs.org/en/docs/guides" target="_blank"
+                      >Node.js Official Guides</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/nvm-sh/nvm" target="_blank"
+                      >nvm on GitHub (installation)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=ENrzD9HAZK4"
+                      target="_blank"
+                      >Node.js Crash Course (Traversy Media)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://nodejs.dev/en/learn/" target="_blank"
+                      >nodejs.dev — Learn Node</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Install Node, run a Hello World server,
+              understand the difference between browser JS and Node.js.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card" id="day-2">
+          <div class="day-header" onclick="toggleDay(2)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(2);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 02</div>
+            <div class="day-info">
+              <div class="day-title">The Event Loop — Deep Dive</div>
+              <div class="day-subtitle">
+                Call stack · Web APIs · Callback queue · Microtasks
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Call stack, heap, event loop phases</li>
+                  <li>setTimeout vs setImmediate vs process.nextTick</li>
+                  <li>Microtask queue (Promise callbacks)</li>
+                  <li>Why blocking the event loop is bad</li>
+                  <li>Async patterns: Callbacks → Promises → async/await</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=8aGhZQkoFbQ"
+                      target="_blank"
+                      >What the heck is the event loop? (JSConf)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick"
+                      target="_blank"
+                      >Node.js Event Loop — Official Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://blog.logrocket.com/a-complete-guide-to-the-node-js-event-loop/"
+                      target="_blank"
+                      >LogRocket: Complete Event Loop Guide</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Explain to yourself (rubber-duck test)
+              what happens when a setTimeout callback runs. Write 3 async
+              snippets using callbacks, promises, and async/await.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card" id="day-3">
+          <div class="day-header" onclick="toggleDay(3)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(3);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 03</div>
+            <div class="day-info">
+              <div class="day-title">Core Modules — fs, path, os, http</div>
+              <div class="day-subtitle">
+                Built-in modules · Reading files · Raw HTTP server
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-practice">Practice</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>fs module — readFile, writeFile, createReadStream</li>
+                  <li>path module — join, resolve, extname</li>
+                  <li>os module — platform, cpus, freemem</li>
+                  <li>http.createServer() — req/res lifecycle</li>
+                  <li>Manual routing with req.url & req.method</li>
+                  <li>Buffer & Streams introduction</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://nodejs.org/api/fs.html" target="_blank"
+                      >Node.js fs module docs</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://nodejs.org/api/http.html" target="_blank"
+                      >Node.js http module docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.freecodecamp.org/news/node-js-streams-everything-you-need-to-know-c9141306be93/"
+                      target="_blank"
+                      >FreeCodeCamp — Streams Guide</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Build a raw HTTP server (no frameworks)
+              that reads a JSON file and returns it as a response.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card" id="day-4">
+          <div class="day-header" onclick="toggleDay(4)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(4);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 04</div>
+            <div class="day-info">
+              <div class="day-title">npm, Modules & Project Structure</div>
+              <div class="day-subtitle">
+                npm ecosystem · semantic versioning · folder architecture
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>npm install --save vs --save-dev</li>
+                  <li>package-lock.json and reproducible builds</li>
+                  <li>SemVer (^1.2.3 vs ~1.2.3 vs exact)</li>
+                  <li>Creating & publishing your own npm module</li>
+                  <li>Folder structure: MVC pattern basics</li>
+                  <li>Environment variables with dotenv</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://docs.npmjs.com/about-npm" target="_blank"
+                      >npm Official Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://semver.org/" target="_blank"
+                      >SemVer specification</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/motdotla/dotenv" target="_blank"
+                      >dotenv package on GitHub</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=jHemKuoWI7c"
+                      target="_blank"
+                      >npm Crash Course (Traversy)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Restructure yesterday's server into a
+              /src/routes, /src/controllers, /config folders. Add dotenv for
+              port configuration.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card" id="day-5">
+          <div class="day-header" onclick="toggleDay(5)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(5);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 05</div>
+            <div class="day-info">
+              <div class="day-title">Express.js — The Framework Layer</div>
+              <div class="day-subtitle">
+                Routing · Middleware · Request & Response objects
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-practice">Practice</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Why Express? Comparing to raw http module</li>
+                  <li>app.get / post / put / delete / patch</li>
+                  <li>Route params (:id) vs query strings (?key=val)</li>
+                  <li>Middleware chain & next() function</li>
+                  <li>express.json() & express.urlencoded()</li>
+                  <li>Express Router — modular routes</li>
+                  <li>Error-handling middleware (4-argument form)</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://expressjs.com/en/guide/routing.html"
+                      target="_blank"
+                      >Express Routing Guide (Official)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://expressjs.com/en/guide/using-middleware.html"
+                      target="_blank"
+                      >Express Middleware Guide</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=L72fhGm1tfE"
+                      target="_blank"
+                      >Express.js Crash Course (Traversy)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/expressjs/express"
+                      target="_blank"
+                      >Express GitHub repo</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Build a full in-memory CRUD Express app
+              for a "books" resource — GET all, GET by ID, POST, PUT, DELETE.
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card" id="day-6">
+          <div class="day-header" onclick="toggleDay(6)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(6);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 06</div>
+            <div class="day-info">
+              <div class="day-title">REST API Design Principles</div>
+              <div class="day-subtitle">
+                HTTP methods · Status codes · RESTful conventions
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>REST constraints: stateless, uniform interface, etc.</li>
+                  <li>HTTP verbs & their semantics (idempotency)</li>
+                  <li>HTTP status codes: 2xx, 3xx, 4xx, 5xx</li>
+                  <li>Resource naming conventions (/users/:id/posts)</li>
+                  <li>Versioning APIs (/api/v1/)</li>
+                  <li>Request/Response body design patterns</li>
+                  <li>Testing with Postman or Thunder Client (VSCode)</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://restfulapi.net/" target="_blank"
+                      >RestfulAPI.net — REST Guide</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+                      target="_blank"
+                      >MDN — HTTP Status Codes</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://www.postman.com/downloads/" target="_blank"
+                      >Postman Download</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://httpstatuses.com/" target="_blank"
+                      >httpstatuses.com — Quick Reference</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Document your Day 5 API using proper
+              status codes. Test all endpoints in Postman. Add meaningful error
+              messages.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card" id="day-7">
+          <div class="day-header" onclick="toggleDay(7)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(7);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 07</div>
+            <div class="day-info">
+              <div class="day-title">Week 1 Review + Mini Project</div>
+              <div class="day-subtitle">
+                Consolidate concepts · Build a Notes REST API
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-project">Project</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Mini Project — Notes API</div>
+                <ul class="topic-list">
+                  <li>Full CRUD API for notes (in-memory)</li>
+                  <li>Proper status codes for all responses</li>
+                  <li>Input validation (manual, no library yet)</li>
+                  <li>Organized folder structure (MVC style)</li>
+                  <li>Test all routes in Postman</li>
+                  <li>Push to GitHub (start building your portfolio!)</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Review Checklist</div>
+                <ul class="topic-list">
+                  <li>Can you explain the event loop in 2 minutes?</li>
+                  <li>Do you know when to use async/await vs callbacks?</li>
+                  <li>Can you create a route that returns 404 correctly?</li>
+                  <li>Do you understand what middleware is?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> A fully working Notes REST API on
+              GitHub. Celebrate — you've completed Week 1! 🎉
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════ WEEK 2 ════════════════════════════════ -->
+      <div class="week-block" id="week-2">
+        <div class="week-header">
+          <span class="week-badge w2">Week 2</span>
+          <h2 class="week-title">Databases, CRUD & Real Data</h2>
+          <span class="week-progress-text" id="w2-text">0/7</span>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="day-card" id="day-8">
+          <div class="day-header" onclick="toggleDay(8)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(8);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 08</div>
+            <div class="day-info">
+              <div class="day-title">Databases 101 — SQL vs NoSQL</div>
+              <div class="day-subtitle">
+                MongoDB setup · Mongoose basics · Schemas & Models
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>SQL vs NoSQL — when to use each</li>
+                  <li>MongoDB concepts: documents, collections</li>
+                  <li>MongoDB Atlas — free cloud database setup</li>
+                  <li>Mongoose ODM — connect to MongoDB</li>
+                  <li>Schema definition, data types, validators</li>
+                  <li>Model.create / find / findById / save</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://mongoosejs.com/docs/guide.html"
+                      target="_blank"
+                      >Mongoose Official Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://www.mongodb.com/atlas" target="_blank"
+                      >MongoDB Atlas (Free Cloud)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=DZBGEVgL2eE"
+                      target="_blank"
+                      >MongoDB Crash Course (Traversy)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/"
+                      target="_blank"
+                      >FreeCodeCamp — Mongoose Guide</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Connect your Notes API to MongoDB
+              Atlas. Replace the in-memory array with real Mongoose operations.
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="day-card" id="day-9">
+          <div class="day-header" onclick="toggleDay(9)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(9);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 09</div>
+            <div class="day-info">
+              <div class="day-title">CRUD with MongoDB — Advanced Queries</div>
+              <div class="day-subtitle">
+                Filtering · Sorting · Pagination · Population
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-practice">Practice</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Mongoose query operators: $gt, $lt, $in, $regex</li>
+                  <li>Pagination: .skip() .limit()</li>
+                  <li>Sorting with .sort()</li>
+                  <li>Mongoose populate() — joining documents</li>
+                  <li>Indexing basics for performance</li>
+                  <li>Aggregation pipeline introduction</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://mongoosejs.com/docs/queries.html"
+                      target="_blank"
+                      >Mongoose Queries Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://mongoosejs.com/docs/populate.html"
+                      target="_blank"
+                      >Mongoose Populate Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.mongodb.com/docs/manual/aggregation/"
+                      target="_blank"
+                      >MongoDB Aggregation Docs</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Add filtering (?search=term),
+              pagination (?page=1&limit=10), and sorting (?sort=createdAt) to
+              your Notes API.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 10 -->
+        <div class="day-card" id="day-10">
+          <div class="day-header" onclick="toggleDay(10)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(10);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 10</div>
+            <div class="day-info">
+              <div class="day-title">Input Validation & Error Handling</div>
+              <div class="day-subtitle">
+                Joi / Zod · Custom middleware · Centralized errors
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-practice">Practice</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Why validation matters at the API layer</li>
+                  <li>Joi or Zod for schema validation</li>
+                  <li>Custom AppError class with status codes</li>
+                  <li>Async error wrapper (catchAsync pattern)</li>
+                  <li>Global error handler middleware</li>
+                  <li>Mongoose validation errors — handling them properly</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://joi.dev/api/" target="_blank"
+                      >Joi API Documentation</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://zod.dev/" target="_blank"
+                      >Zod Documentation</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/"
+                      target="_blank"
+                      >Jonas Schmedtmann — Node Bootcamp (Udemy)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Add Joi validation to POST/PUT routes
+              and a global error middleware that catches all unhandled errors.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 11 -->
+        <div class="day-card" id="day-11">
+          <div class="day-header" onclick="toggleDay(11)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(11);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 11</div>
+            <div class="day-info">
+              <div class="day-title">
+                SQL Databases — PostgreSQL with Sequelize
+              </div>
+              <div class="day-subtitle">
+                Relational model · ORM · Migrations
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>PostgreSQL installation and psql CLI</li>
+                  <li>Relational concepts: tables, foreign keys, joins</li>
+                  <li>Sequelize setup & connection</li>
+                  <li>Defining Models, sync vs migrations</li>
+                  <li>hasOne, hasMany, belongsTo associations</li>
+                  <li>Raw queries vs ORM queries</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://sequelize.org/docs/v6/" target="_blank"
+                      >Sequelize v6 Official Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.postgresql.org/docs/current/tutorial.html"
+                      target="_blank"
+                      >PostgreSQL Tutorial</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://railway.app/" target="_blank"
+                      >Railway.app — Free PostgreSQL hosting</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=2GrHoOKCFaE"
+                      target="_blank"
+                      >Sequelize Crash Course (Net Ninja)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Rebuild the Notes API using PostgreSQL
+              + Sequelize. Compare the experience with MongoDB.
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 12 -->
+        <div class="day-card" id="day-12">
+          <div class="day-header" onclick="toggleDay(12)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(12);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 12</div>
+            <div class="day-info">
+              <div class="day-title">File Uploads & Multer</div>
+              <div class="day-subtitle">
+                Multipart forms · Disk/memory storage · Cloudinary
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-practice">Practice</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>multipart/form-data explained</li>
+                  <li>Multer middleware — diskStorage vs memoryStorage</li>
+                  <li>File type and size validation</li>
+                  <li>Uploading to Cloudinary (cloud storage)</li>
+                  <li>Serving static files with express.static</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://github.com/expressjs/multer"
+                      target="_blank"
+                      >Multer on GitHub</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://cloudinary.com/documentation/node_integration"
+                      target="_blank"
+                      >Cloudinary Node SDK Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://expressjs.com/en/starter/static-files.html"
+                      target="_blank"
+                      >Serving Static Files — Express</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Add an avatar upload endpoint to your
+              API. Store the file URL in the database.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 13 -->
+        <div class="day-card" id="day-13">
+          <div class="day-header" onclick="toggleDay(13)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(13);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 13</div>
+            <div class="day-info">
+              <div class="day-title">
+                Environment Config & Secrets Management
+              </div>
+              <div class="day-subtitle">
+                12-factor app · Config module · .env security
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>12-factor app principle — config in environment</li>
+                  <li>.env files and .gitignore (never commit secrets!)</li>
+                  <li>Separating dev/staging/production configs</li>
+                  <li>process.env vs config modules</li>
+                  <li>Using dotenv-flow or convict for multi-env</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://12factor.net/config" target="_blank"
+                      >The Twelve-Factor App — Config</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/kerimdzhanov/dotenv-flow"
+                      target="_blank"
+                      >dotenv-flow</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/lorenwest/node-config"
+                      target="_blank"
+                      >node-config package</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Separate your project into development
+              and production configs. Ensure nothing sensitive is committed to
+              git.
+            </div>
+            <div class="time-estimate">⏱ ~1.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 14 -->
+        <div class="day-card" id="day-14">
+          <div class="day-header" onclick="toggleDay(14)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(14);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 14</div>
+            <div class="day-info">
+              <div class="day-title">Week 2 Review — Blog API Project</div>
+              <div class="day-subtitle">
+                Users + Posts + Comments · Real relational data
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-project">Project</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Project — Blog API</div>
+                <ul class="topic-list">
+                  <li>Users collection / table</li>
+                  <li>Posts (belongs to User)</li>
+                  <li>Comments (belongs to Post and User)</li>
+                  <li>Full CRUD for all three resources</li>
+                  <li>Pagination + filtering on GET posts</li>
+                  <li>Validation and global error handling</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Stretch Goals</div>
+                <ul class="topic-list">
+                  <li>Add search across posts by title</li>
+                  <li>Add like count to posts (atomic increment)</li>
+                  <li>Write README with API documentation</li>
+                  <li>Push to GitHub</li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> A fully working Blog API with real
+              database relationships. Week 2 complete! 🔥
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════ WEEK 3 ════════════════════════════════ -->
+      <div class="week-block" id="week-3">
+        <div class="week-header">
+          <span class="week-badge w3">Week 3</span>
+          <h2 class="week-title">Authentication, Security & Advanced Topics</h2>
+          <span class="week-progress-text" id="w3-text">0/7</span>
+        </div>
+
+        <!-- Day 15 -->
+        <div class="day-card" id="day-15">
+          <div class="day-header" onclick="toggleDay(15)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(15);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 15</div>
+            <div class="day-info">
+              <div class="day-title">Authentication — JWT & bcrypt</div>
+              <div class="day-subtitle">
+                Password hashing · JWT tokens · Protect middleware
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Authentication vs Authorization</li>
+                  <li>bcrypt — hashing passwords, salt rounds</li>
+                  <li>JWT structure: header.payload.signature</li>
+                  <li>Signing and verifying JWTs with jsonwebtoken</li>
+                  <li>Storing JWT: cookies vs localStorage vs memory</li>
+                  <li>Protect middleware — extracting user from token</li>
+                  <li>Token expiry and refresh token concept</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://jwt.io/" target="_blank"
+                      >jwt.io — JWT Debugger + Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/auth0/node-jsonwebtoken"
+                      target="_blank"
+                      >jsonwebtoken package</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/kelektiv/node.bcrypt.js"
+                      target="_blank"
+                      >bcrypt.js package</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=mbsmsi7l3r4"
+                      target="_blank"
+                      >JWT Auth Tutorial (Web Dev Simplified)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Add /auth/register and /auth/login to
+              your Blog API. Protect POST/PUT/DELETE routes with a JWT
+              middleware.
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 16 -->
+        <div class="day-card" id="day-16">
+          <div class="day-header" onclick="toggleDay(16)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(16);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 16</div>
+            <div class="day-info">
+              <div class="day-title">
+                Authorization & Role-Based Access Control
+              </div>
+              <div class="day-subtitle">
+                Roles · Permissions · Resource ownership
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Role-based access: admin, user, guest</li>
+                  <li>restrictTo() middleware factory pattern</li>
+                  <li>
+                    Ownership checks (can a user edit only their own post?)
+                  </li>
+                  <li>CASL library for fine-grained permissions</li>
+                  <li>Storing roles in JWT payload vs database</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://casl.js.org/v6/en/" target="_blank"
+                      >CASL — Isomorphic auth library</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokens-and-passport"
+                      target="_blank"
+                      >DigitalOcean — JWT Auth deep dive</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Implement admin/user roles. Only
+              authors can edit their own posts. Only admins can delete any post.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 17 -->
+        <div class="day-card" id="day-17">
+          <div class="day-header" onclick="toggleDay(17)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(17);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 17</div>
+            <div class="day-info">
+              <div class="day-title">API Security Hardening</div>
+              <div class="day-subtitle">
+                Rate limiting · CORS · Helmet · SQL Injection / XSS
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>helmet — HTTP security headers</li>
+                  <li>CORS — origins, methods, credentials</li>
+                  <li>express-rate-limit — protect against brute force</li>
+                  <li>mongo-sanitize — NoSQL injection prevention</li>
+                  <li>xss-clean — preventing XSS attacks</li>
+                  <li>hpp — HTTP parameter pollution</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://github.com/helmetjs/helmet" target="_blank"
+                      >Helmet.js</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/expressjs/cors" target="_blank"
+                      >cors package</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/express-rate-limit/express-rate-limit"
+                      target="_blank"
+                      >express-rate-limit</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://owasp.org/www-project-top-ten/"
+                      target="_blank"
+                      >OWASP Top 10 — Security Risks</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Add all 5 security packages to your
+              API. Configure CORS for a localhost:3000 frontend origin.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 18 -->
+        <div class="day-card" id="day-18">
+          <div class="day-header" onclick="toggleDay(18)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(18);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 18</div>
+            <div class="day-info">
+              <div class="day-title">Testing — Jest & Supertest</div>
+              <div class="day-subtitle">
+                Unit tests · Integration tests · Test database
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Types of tests: unit, integration, e2e</li>
+                  <li>Jest setup — describe, it, expect</li>
+                  <li>Supertest — HTTP assertions for Express</li>
+                  <li>Testing database setup/teardown (beforeAll, afterAll)</li>
+                  <li>Mocking with jest.fn() and jest.mock()</li>
+                  <li>Code coverage reports</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://jestjs.io/docs/getting-started"
+                      target="_blank"
+                      >Jest Official Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/ladjs/supertest" target="_blank"
+                      >Supertest on GitHub</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=r5L1XRZaCR0"
+                      target="_blank"
+                      >Testing Node.js APIs (Fireship)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Write 5 integration tests for your blog
+              API — test auth, test CRUD, test validation errors.
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 19 -->
+        <div class="day-card" id="day-19">
+          <div class="day-header" onclick="toggleDay(19)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(19);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 19</div>
+            <div class="day-info">
+              <div class="day-title">Logging, Monitoring & Debugging</div>
+              <div class="day-subtitle">
+                Winston · Morgan · Debug module · Structured logs
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Morgan — HTTP request logging middleware</li>
+                  <li>Winston — multi-transport logger (file + console)</li>
+                  <li>Log levels: error, warn, info, debug</li>
+                  <li>Structured logging in JSON format</li>
+                  <li>Node.js debugger — node --inspect</li>
+                  <li>VS Code debug configuration</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://github.com/winstonjs/winston"
+                      target="_blank"
+                      >Winston logger</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/expressjs/morgan"
+                      target="_blank"
+                      >Morgan middleware</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://nodejs.org/en/docs/guides/debugging-getting-started"
+                      target="_blank"
+                      >Node.js Debugging Guide</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Replace all console.log calls with
+              Winston. Log requests with Morgan, log errors to a file.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 20 -->
+        <div class="day-card" id="day-20">
+          <div class="day-header" onclick="toggleDay(20)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(20);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 20</div>
+            <div class="day-info">
+              <div class="day-title">Email & Background Jobs</div>
+              <div class="day-subtitle">
+                Nodemailer · Bull queue · Redis basics
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Nodemailer — SMTP setup with Gmail/Mailtrap</li>
+                  <li>Sending HTML emails with templates</li>
+                  <li>Why job queues? (non-blocking heavy tasks)</li>
+                  <li>Bull/BullMQ — job queue backed by Redis</li>
+                  <li>Redis basics — key-value store, TTL</li>
+                  <li>Processing jobs in a worker process</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://nodemailer.com/about/" target="_blank"
+                      >Nodemailer Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://docs.bullmq.io/" target="_blank"
+                      >BullMQ Official Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://mailtrap.io/" target="_blank"
+                      >Mailtrap — Email Testing</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://redis.io/docs/getting-started/"
+                      target="_blank"
+                      >Redis Getting Started</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Send a welcome email when a user
+              registers. Use Mailtrap to test without real email sending.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 21 -->
+        <div class="day-card" id="day-21">
+          <div class="day-header" onclick="toggleDay(21)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(21);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 21</div>
+            <div class="day-info">
+              <div class="day-title">Week 3 Review — Secure Blog API</div>
+              <div class="day-subtitle">
+                Auth + security + tests + logging — all in one
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-project">Project</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Integration Checklist</div>
+                <ul class="topic-list">
+                  <li>JWT auth + role-based access</li>
+                  <li>Helmet, CORS, rate limiting applied</li>
+                  <li>Integration tests passing (>70% coverage)</li>
+                  <li>Winston logging in place</li>
+                  <li>Welcome email on registration</li>
+                  <li>All endpoints documented in README</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Stretch</div>
+                <ul class="topic-list">
+                  <li>Password reset flow via email link</li>
+                  <li>Refresh token implementation</li>
+                  <li>API documentation with Swagger</li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Production-ready (not just functional)
+              Blog API. Half-way to a solid backend portfolio. 🚀
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════ WEEK 4 ════════════════════════════════ -->
+      <div class="week-block" id="week-4">
+        <div class="week-header">
+          <span class="week-badge w4">Week 4</span>
+          <h2 class="week-title">Architecture, Deployment & Capstone</h2>
+          <span class="week-progress-text" id="w4-text">0/9</span>
+        </div>
+
+        <!-- Day 22 -->
+        <div class="day-card" id="day-22">
+          <div class="day-header" onclick="toggleDay(22)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(22);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 22</div>
+            <div class="day-info">
+              <div class="day-title">Backend Architecture Patterns</div>
+              <div class="day-subtitle">
+                MVC · Repository pattern · Service layer · Clean arch
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-concept">Concept</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>MVC pattern in Node.js context</li>
+                  <li>Service layer — business logic separation</li>
+                  <li>Repository pattern — database abstraction</li>
+                  <li>Dependency Injection concepts</li>
+                  <li>Monolith vs microservices (when to split?)</li>
+                  <li>Folder structure for scalable apps</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/"
+                      target="_blank"
+                      >LogRocket — Node.js Architecture</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=oNlMrpnUSFE"
+                      target="_blank"
+                      >Service Layer Pattern (Hussein Nasser)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/goldbergyoni/nodebestpractices"
+                      target="_blank"
+                      >Node.js Best Practices (GitHub — 100k⭐)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Refactor your Blog API to use a Service
+              layer — controllers call services, services call models.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 23 -->
+        <div class="day-card" id="day-23">
+          <div class="day-header" onclick="toggleDay(23)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(23);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 23</div>
+            <div class="day-info">
+              <div class="day-title">Caching with Redis</div>
+              <div class="day-subtitle">
+                Cache-aside pattern · TTL · Invalidation strategies
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Why caching? Latency + load reduction</li>
+                  <li>Redis as a caching layer in Node.js</li>
+                  <li>Cache-aside (lazy loading) pattern</li>
+                  <li>Setting TTL on cached keys</li>
+                  <li>Cache invalidation — when to clear</li>
+                  <li>Session storage with Redis</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://redis.io/docs/manual/patterns/"
+                      target="_blank"
+                      >Redis Patterns Documentation</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://github.com/redis/ioredis" target="_blank"
+                      >ioredis — Node Redis client</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=oaJq1mQ3dFI"
+                      target="_blank"
+                      >Redis Caching in Node.js (Fireship)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Cache the GET /posts endpoint in Redis.
+              Invalidate the cache when a new post is created.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 24 -->
+        <div class="day-card" id="day-24">
+          <div class="day-header" onclick="toggleDay(24)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(24);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 24</div>
+            <div class="day-info">
+              <div class="day-title">WebSockets & Real-Time with Socket.io</div>
+              <div class="day-subtitle">
+                WS protocol · Rooms · Namespaces · Chat example
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>HTTP polling vs WebSockets vs SSE</li>
+                  <li>Socket.io — server and client setup</li>
+                  <li>Emit and on — event-driven messaging</li>
+                  <li>Rooms — scoped broadcasting</li>
+                  <li>Namespaces — logical separation</li>
+                  <li>Auth with Socket.io middleware</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://socket.io/docs/v4/" target="_blank"
+                      >Socket.io Official Docs v4</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=ZKEqqIO7n-k"
+                      target="_blank"
+                      >Socket.io Chat App (Traversy)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://socket.io/get-started/chat" target="_blank"
+                      >Socket.io — Getting Started Chat</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Build a real-time comment notification
+              — when a comment is added, all users on that post page get
+              notified.
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 25 -->
+        <div class="day-card" id="day-25">
+          <div class="day-header" onclick="toggleDay(25)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(25);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 25</div>
+            <div class="day-info">
+              <div class="day-title">API Documentation with Swagger</div>
+              <div class="day-subtitle">
+                OpenAPI 3.0 · swagger-ui-express · JSDoc annotations
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-practice">Practice</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>OpenAPI 3.0 specification basics</li>
+                  <li>swagger-jsdoc — annotations in code</li>
+                  <li>swagger-ui-express — interactive API explorer</li>
+                  <li>Documenting request bodies, params, responses</li>
+                  <li>Authentication in Swagger UI</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://swagger.io/specification/" target="_blank"
+                      >OpenAPI 3.0 Specification</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/Surnet/swagger-jsdoc"
+                      target="_blank"
+                      >swagger-jsdoc</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://editor.swagger.io/" target="_blank"
+                      >Swagger Editor Online</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Document all Blog API endpoints with
+              Swagger. Host the UI at /api-docs. Any developer should be able to
+              test your API from the browser.
+            </div>
+            <div class="time-estimate">⏱ ~2.5 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 26 -->
+        <div class="day-card" id="day-26">
+          <div class="day-header" onclick="toggleDay(26)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(26);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 26</div>
+            <div class="day-info">
+              <div class="day-title">Docker & Containerization</div>
+              <div class="day-subtitle">
+                Dockerfile · docker-compose · Container networking
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-advanced">Advanced</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>What is Docker? Containers vs VMs</li>
+                  <li>Writing a Dockerfile for Node.js</li>
+                  <li>.dockerignore — exclude node_modules</li>
+                  <li>docker-compose — Node + MongoDB + Redis stack</li>
+                  <li>Volumes and networking between containers</li>
+                  <li>Building and running your image</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a
+                      href="https://docs.docker.com/get-started/"
+                      target="_blank"
+                      >Docker Official Get Started</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://nodejs.org/en/docs/guides/nodejs-docker-webapp"
+                      target="_blank"
+                      >Node.js Docker Guide (Official)</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/watch?v=gAkwW2tuIqE"
+                      target="_blank"
+                      >Docker in 100 Seconds (Fireship)</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Containerize your Blog API. Run it with
+              docker-compose alongside MongoDB and Redis containers.
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 27 -->
+        <div class="day-card" id="day-27">
+          <div class="day-header" onclick="toggleDay(27)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(27);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 27</div>
+            <div class="day-info">
+              <div class="day-title">
+                Deployment — Railway / Render / Fly.io
+              </div>
+              <div class="day-subtitle">
+                CI/CD basics · Environment variables in prod · HTTPS
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-practice">Practice</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Topics to Cover</div>
+                <ul class="topic-list">
+                  <li>Railway vs Render vs Fly.io comparison</li>
+                  <li>Deploying a Node.js app with git push</li>
+                  <li>Setting environment variables in production</li>
+                  <li>Database connection strings in prod</li>
+                  <li>Health check endpoints (/health)</li>
+                  <li>GitHub Actions — basic CI/CD pipeline</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://railway.app/docs" target="_blank"
+                      >Railway Deployment Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://render.com/docs/deploy-node-express-app"
+                      target="_blank"
+                      >Render — Deploy Express</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://fly.io/docs/js/" target="_blank"
+                      >Fly.io Node.js Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://docs.github.com/en/actions" target="_blank"
+                      >GitHub Actions Docs</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Deploy your Blog API to Railway or
+              Render. Get a live HTTPS URL you can share.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 28 -->
+        <div class="day-card" id="day-28">
+          <div class="day-header" onclick="toggleDay(28)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(28);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 28</div>
+            <div class="day-info">
+              <div class="day-title">Capstone Project — Start</div>
+              <div class="day-subtitle">
+                Task Manager / E-commerce API · Full planning
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-project">Project</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">
+                  Capstone Options (pick one)
+                </div>
+                <ul class="topic-list">
+                  <li>
+                    <strong>Task Manager API</strong> — Users, Projects, Tasks,
+                    assignments, deadlines, notifications
+                  </li>
+                  <li>
+                    <strong>E-commerce API</strong> — Products, Cart, Orders,
+                    Payments (Stripe), Users
+                  </li>
+                  <li>
+                    <strong>Social Feed API</strong> — Posts, Follows, Feed,
+                    Likes, Real-time updates
+                  </li>
+                </ul>
+                <br />
+                <div class="body-section-title">Day 28 Tasks</div>
+                <ul class="topic-list">
+                  <li>Plan data models (draw the schema)</li>
+                  <li>Plan API endpoints (write them all out)</li>
+                  <li>Set up project scaffold with all configs</li>
+                  <li>Initialize GitHub repo with README</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Resources</div>
+                <ul class="resource-list">
+                  <li>
+                    <a href="https://stripe.com/docs/api" target="_blank"
+                      >Stripe API Docs (if e-commerce)</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://dbdiagram.io/" target="_blank"
+                      >dbdiagram.io — Schema design</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.notion.so/templates/api-documentation"
+                      target="_blank"
+                      >Notion API Doc Template</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Have a complete written plan — schemas,
+              endpoints, tech choices. No code yet. Plan before you build.
+            </div>
+            <div class="time-estimate">⏱ ~2 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 29 -->
+        <div class="day-card" id="day-29">
+          <div class="day-header" onclick="toggleDay(29)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(29);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 29</div>
+            <div class="day-info">
+              <div class="day-title">Capstone Project — Build</div>
+              <div class="day-subtitle">
+                Full implementation · All features · Tests
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-project">Project</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Implementation Checklist</div>
+                <ul class="topic-list">
+                  <li>All models defined with proper validation</li>
+                  <li>All CRUD routes implemented</li>
+                  <li>JWT auth + role-based access control</li>
+                  <li>Proper error handling throughout</li>
+                  <li>At least 5 integration tests</li>
+                  <li>Swagger documentation</li>
+                  <li>Redis caching on heavy endpoints</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">Code Quality</div>
+                <ul class="topic-list">
+                  <li>Service layer (no business logic in controllers)</li>
+                  <li>ESLint configured and passing</li>
+                  <li>Environment variables documented in .env.example</li>
+                  <li>Winston logging</li>
+                  <li>Helmet + CORS configured</li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> Feature-complete capstone. It should
+              work. Quality comes in Day 30.
+            </div>
+            <div class="time-estimate">⏱ ~4 hrs</div>
+          </div>
+        </div>
+
+        <!-- Day 30 -->
+        <div class="day-card" id="day-30">
+          <div class="day-header" onclick="toggleDay(30)">
+            <div
+              class="day-checkbox"
+              onclick="
+                event.stopPropagation();
+                toggleCheck(30);
+              "
+            >
+              <svg
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="1,6 4,9 11,2" />
+              </svg>
+            </div>
+            <div class="day-number">DAY 30</div>
+            <div class="day-info">
+              <div class="day-title">🏁 Capstone Deploy & Portfolio Polish</div>
+              <div class="day-subtitle">
+                Deploy · README · Retrospective · What's next
+              </div>
+            </div>
+            <div class="day-tags">
+              <span class="tag tag-project">Project</span>
+            </div>
+            <div class="completed-stamp">✓ Done</div>
+            <button class="day-expand-btn">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4" />
+              </svg>
+            </button>
+          </div>
+          <div class="day-body">
+            <div class="day-body-grid">
+              <div>
+                <div class="body-section-title">Final Day Tasks</div>
+                <ul class="topic-list">
+                  <li>Deploy to Railway/Render/Fly.io</li>
+                  <li>Write a killer README (diagram, setup, endpoints)</li>
+                  <li>Record a 2-minute Loom walkthrough (optional)</li>
+                  <li>Add to your resume / portfolio site</li>
+                  <li>Share on LinkedIn / Twitter / dev.to</li>
+                  <li>Open your first PR for a friend to review</li>
+                </ul>
+              </div>
+              <div>
+                <div class="body-section-title">What's Next? 🗺️</div>
+                <ul class="topic-list">
+                  <li>TypeScript with Node.js</li>
+                  <li>GraphQL with Apollo Server</li>
+                  <li>Microservices with message queues (RabbitMQ)</li>
+                  <li>Kubernetes basics</li>
+                  <li>Contribute to open source Node.js projects</li>
+                </ul>
+              </div>
+            </div>
+            <div class="goal-box">
+              <span>Today's Goal:</span> A live, deployed, fully-documented
+              Node.js API on the internet. You are now a fullstack developer.
+              Ship it! 🎉
+            </div>
+            <div class="time-estimate">⏱ ~3 hrs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── MASTER RESOURCES ─── -->
+      <div class="resources-section">
+        <h2 class="section-title">📚 Master Resource Library</h2>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <div class="resource-card-icon">📖</div>
+            <div class="resource-card-title">Node.js Official Docs</div>
+            <div class="resource-card-desc">
+              The canonical reference. Bookmark the API docs section.
+            </div>
+            <a href="https://nodejs.org/api/" target="_blank"
+              >nodejs.org/api →</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">⭐</div>
+            <div class="resource-card-title">Node.js Best Practices</div>
+            <div class="resource-card-desc">
+              100k+ star GitHub repo. The go-to guide for production Node.js.
+            </div>
+            <a
+              href="https://github.com/goldbergyoni/nodebestpractices"
+              target="_blank"
+              >GitHub repo →</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">🎓</div>
+            <div class="resource-card-title">Jonas Schmedtmann — Bootcamp</div>
+            <div class="resource-card-desc">
+              Best paid Udemy course for this exact learning path.
+            </div>
+            <a
+              href="https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/"
+              target="_blank"
+              >Udemy course →</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">📺</div>
+            <div class="resource-card-title">Traversy Media</div>
+            <div class="resource-card-desc">
+              Excellent crash course videos for every topic in this plan.
+            </div>
+            <a href="https://www.youtube.com/@TraversyMedia" target="_blank"
+              >YouTube channel →</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">⚡</div>
+            <div class="resource-card-title">Fireship.io</div>
+            <div class="resource-card-desc">
+              100-second concept videos. Great for quick mental models.
+            </div>
+            <a href="https://www.youtube.com/@Fireship" target="_blank"
+              >YouTube channel →</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">🔧</div>
+            <div class="resource-card-title">Express.js Docs</div>
+            <div class="resource-card-desc">
+              Official Express documentation — routing, middleware, error
+              handling.
+            </div>
+            <a href="https://expressjs.com/en/4x/api.html" target="_blank"
+              >expressjs.com →</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">🍃</div>
+            <div class="resource-card-title">Mongoose Docs</div>
+            <div class="resource-card-desc">
+              Complete reference for schemas, queries, and populate.
+            </div>
+            <a href="https://mongoosejs.com/docs/" target="_blank"
+              >mongoosejs.com →</a
+            >
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">🔑</div>
+            <div class="resource-card-title">JWT.io</div>
+            <div class="resource-card-desc">
+              Debug tokens live, understand the spec, link to libraries.
+            </div>
+            <a href="https://jwt.io/" target="_blank">jwt.io →</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-card-icon">🧪</div>
+            <div class="resource-card-title">Jest Docs</div>
+            <div class="resource-card-desc">
+              Complete testing framework documentation with examples.
+            </div>
+            <a href="https://jestjs.io/docs/getting-started" target="_blank"
+              >jestjs.io →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="doc-footer">
+        <span
+          >Node.js 30-Day Mastery Plan · Crafed by Harshit for Frontend Engineers</span
+        >
+        <span id="last-updated">Last updated: —</span>
+      </div>
+    </div>
+
+    <script>
+      // ─── STATE ───
+      const STORAGE_KEY = "nodejs30_progress";
+      let completed = new Set(
+        JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"),
+      );
+
+      // ─── INIT ───
+      function init() {
+        const now = new Date();
+        document.getElementById("created-date").textContent =
+          now.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+        document.getElementById("last-updated").textContent =
+          "Last updated: " +
+          now.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
+
+        completed.forEach((id) => {
+          const card = document.getElementById("day-" + id);
+          if (card) card.classList.add("completed");
+        });
+        updateProgress();
+      }
+
+      // ─── TOGGLE CHECK ───
+      function toggleCheck(id) {
+        const card = document.getElementById("day-" + id);
+        if (completed.has(id)) {
+          completed.delete(id);
+          card.classList.remove("completed");
+        } else {
+          completed.add(id);
+          card.classList.add("completed");
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify([...completed]));
+        updateProgress();
+      }
+
+      // ─── TOGGLE EXPAND ───
+      function toggleDay(id) {
+        const card = document.getElementById("day-" + id);
+        card.classList.toggle("open");
+      }
+
+      // ─── UPDATE PROGRESS ───
+      function updateProgress() {
+        const total = 30;
+        const done = completed.size;
+        const pct = Math.round((done / total) * 100);
+
+        document.getElementById("pct-display").textContent = pct + "%";
+        document.getElementById("main-bar").style.width = pct + "%";
+        document.getElementById("header-progress").textContent =
+          done + " / " + total + " days";
+
+        // Per-week
+        const weeks = [
+          { ids: [1, 2, 3, 4, 5, 6, 7], bar: "w1-bar", txt: "w1-text" },
+          { ids: [8, 9, 10, 11, 12, 13, 14], bar: "w2-bar", txt: "w2-text" },
+          { ids: [15, 16, 17, 18, 19, 20, 21], bar: "w3-bar", txt: "w3-text" },
+          {
+            ids: [22, 23, 24, 25, 26, 27, 28, 29, 30],
+            bar: "w4-bar",
+            txt: "w4-text",
+          },
+        ];
+
+        weeks.forEach((w) => {
+          const wDone = w.ids.filter((id) => completed.has(id)).length;
+          const wPct = Math.round((wDone / w.ids.length) * 100);
+          document.getElementById(w.bar).style.width = wPct + "%";
+          document.getElementById(w.txt).textContent =
+            wDone + "/" + w.ids.length;
+        });
+      }
+
+      // ─── EXPAND ALL ───
+      function expandAll() {
+        for (let i = 1; i <= 30; i++) {
+          const card = document.getElementById("day-" + i);
+          if (card) card.classList.add("open");
+        }
+      }
+
+      // ─── RESET ───
+      function resetAll() {
+        if (!confirm("Reset all progress? This cannot be undone.")) return;
+        completed.clear();
+        localStorage.removeItem(STORAGE_KEY);
+        for (let i = 1; i <= 30; i++) {
+          const card = document.getElementById("day-" + i);
+          if (card) card.classList.remove("completed", "open");
+        }
+        updateProgress();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
