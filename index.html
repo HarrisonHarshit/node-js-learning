@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dev. Harshit | 30-Day Node.js Mastery Plan</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><text x='16' y='22' font-family='monospace' font-size='18' font-weight='700' text-anchor='middle' fill='white'>N</text></svg>" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563eb'/><text x='16' y='22' font-family='monospace' font-size='18' font-weight='700' text-anchor='middle' fill='white'>N</text></svg>"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -241,6 +244,7 @@
         display: flex;
         gap: 24px;
         flex-wrap: wrap;
+        margin-bottom: 16px;
       }
 
       .meta-item {
@@ -685,6 +689,25 @@
         margin-top: 8px;
       }
 
+      .attachment-wrapper {
+        margin-top: 12px;
+      }
+
+      .attachment-wrapper a {
+        font-size: 13px;
+        color: var(--accent);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+        transition: all 0.15s ease-in-out;
+      }
+      .attachment-wrapper a:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+      }
+
       /* ─── RESOURCES PANEL ─── */
       .resources-section {
         background: var(--surface);
@@ -876,16 +899,209 @@
         align-items: center;
         gap: 4px;
       }
+
+      /* ─── AUTH OVERLAY ─── */
+      #auth-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(247, 246, 242, 0.85);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+      #auth-overlay.hidden {
+        display: none;
+      }
+
+      .auth-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: 2.5rem 2rem;
+        width: 100%;
+        max-width: 360px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .auth-logo {
+        width: 148px;
+        height: 48px;
+        border-radius: 10px;
+        background: var(--accent);
+        color: #fff;
+        font-family: "DM Mono", monospace;
+        font-size: 1rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.25rem;
+      }
+      .auth-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.4rem;
+        color: var(--text-primary);
+        margin: 0;
+      }
+      .auth-subtitle {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.25rem;
+      }
+      .auth-input {
+        width: 100%;
+        padding: 0.6rem 0.875rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--bg);
+        font-family: "DM Mono", monospace;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.15s;
+      }
+      .auth-input:focus {
+        border-color: var(--accent);
+      }
+      .auth-input.shake {
+        animation: shake 0.35s ease;
+        border-color: var(--red);
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20% {
+          transform: translateX(-6px);
+        }
+        40% {
+          transform: translateX(6px);
+        }
+        60% {
+          transform: translateX(-4px);
+        }
+        80% {
+          transform: translateX(4px);
+        }
+      }
+      .auth-error {
+        font-size: 0.8rem;
+        color: var(--red);
+        min-height: 1em;
+        margin: -0.25rem 0;
+      }
+      .auth-btn {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        margin-top: 0.25rem;
+        border: none;
+        border-radius: var(--radius);
+        background: var(--accent);
+        color: #fff;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+      .auth-btn:hover {
+        opacity: 0.88;
+      }
+
+      /* ─── RESET MODAL ─── */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(26, 25, 23, 0.45);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+      }
+      .modal-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: 2rem;
+        width: 100%;
+        max-width: 360px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .modal-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.2rem;
+        color: var(--text-primary);
+      }
+      .modal-body {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+      }
+      .btn-danger {
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: var(--radius);
+        padding: 0.45rem 1rem;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+      .btn-danger:hover {
+        opacity: 0.85;
+      }
     </style>
   </head>
   <body>
+    <!-- ─── AUTH OVERLAY ─── -->
+    <div id="auth-overlay">
+      <div class="auth-card">
+        <div class="auth-logo">Dev. Harshit</div>
+        <h2 class="auth-title">30-Day Node.js Plan</h2>
+        <p class="auth-subtitle">Enter the password to continue</p>
+        <input
+          type="password"
+          id="auth-input"
+          class="auth-input"
+          placeholder="Password"
+          onkeydown="if (event.key === 'Enter') unlockPage();"
+          autocomplete="current-password"
+        />
+        <p class="auth-error" id="auth-error"></p>
+        <button class="btn-primary auth-btn" onclick="unlockPage()">
+          Unlock
+        </button>
+      </div>
+    </div>
     <!-- ─── STICKY HEADER ─── -->
     <header class="doc-header">
       <div class="doc-header-inner">
         <div class="doc-title-bar">
           <div class="doc-icon"><span class="text-white">Node.js</span></div>
           <div>
-            <div class="doc-title-text">Dev. Harshit | Node.js Mastery — 30-Day Plan</div>
+            <div class="doc-title-text">
+              Dev. Harshit | Node.js Mastery — 30-Day Plan
+            </div>
             <div class="doc-title-sub">
               Frontend → Fullstack · Personal Learning Doc
             </div>
@@ -896,7 +1112,9 @@
             <span>⬤</span>
             <span id="header-progress">0 / 30 days</span>
           </div>
-          <button class="btn-sm btn-ghost" onclick="resetAll()">Reset</button>
+          <button class="btn-sm btn-ghost" onclick="openResetModal()">
+            Reset
+          </button>
           <button class="btn-sm btn-primary" onclick="expandAll()">
             Expand All
           </button>
@@ -909,7 +1127,10 @@
       <!-- HERO -->
       <div class="hero">
         <div class="hero-tag">📋 Learning Document · Node.js</div>
-        <h1>Welcome Back <em>Harshit!</em> <br/>Your <em>30-Day</em> Node.js Backend Blueprint</h1>
+        <h1>
+          Welcome Back <em>Harshit!</em> <br />Your <em>30-Day</em> Node.js
+          Backend Blueprint
+        </h1>
         <p class="hero-desc">
           Tailored for a frontend engineer with 5 years of experience. This plan
           takes you from zero to confident backend developer — covering Node.js
@@ -937,6 +1158,10 @@
             <span class="meta-label">Created</span>
             <span class="meta-value" id="created-date">—</span>
           </div>
+        </div>
+        <hr />
+        <div class="attachment-wrapper">
+          <a href="#">📋 Rubico | Learning Plan Documentation</a>
         </div>
       </div>
 
@@ -3598,13 +3823,101 @@
       <!-- FOOTER -->
       <div class="doc-footer">
         <span
-          >Node.js 30-Day Mastery Plan · Crafed by Harshit for Frontend Engineers</span
+          >Node.js 30-Day Mastery Plan · Crafed by Harshit for Frontend
+          Engineers</span
         >
         <span id="last-updated">Last updated: —</span>
       </div>
     </div>
 
+    <!-- ─── RESET MODAL ─── -->
+    <div id="reset-modal" class="modal-backdrop" style="display: none">
+      <div class="modal-card">
+        <h3 class="modal-title">Confirm Reset</h3>
+        <p class="modal-body">
+          Enter the password to wipe all progress. This cannot be undone.
+        </p>
+        <input
+          type="password"
+          id="reset-input"
+          class="auth-input"
+          placeholder="Password"
+          onkeydown="if (event.key === 'Enter') confirmReset();"
+          autocomplete="current-password"
+        />
+        <p class="auth-error" id="reset-error"></p>
+        <div class="modal-actions">
+          <button class="btn-sm btn-ghost" onclick="closeResetModal()">
+            Cancel
+          </button>
+          <button class="btn-sm btn-danger" onclick="confirmReset()">
+            Confirm Reset
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
+      // ─── AUTH ───
+      const SITE_PASSWORD = "Rubico@0987";
+
+      function checkAuth() {
+        if (sessionStorage.getItem("nodejs30_auth") === "1") {
+          document.getElementById("auth-overlay").classList.add("hidden");
+        }
+      }
+
+      function unlockPage() {
+        const input = document.getElementById("auth-input");
+        const error = document.getElementById("auth-error");
+        if (input.value === SITE_PASSWORD) {
+          sessionStorage.setItem("nodejs30_auth", "1");
+          document.getElementById("auth-overlay").classList.add("hidden");
+        } else {
+          error.textContent = "Incorrect password. Try again.";
+          input.classList.remove("shake");
+          void input.offsetWidth; // reflow to restart animation
+          input.classList.add("shake");
+          input.value = "";
+          input.addEventListener(
+            "animationend",
+            () => input.classList.remove("shake"),
+            { once: true },
+          );
+        }
+      }
+
+      function openResetModal() {
+        document.getElementById("reset-input").value = "";
+        document.getElementById("reset-error").textContent = "";
+        document.getElementById("reset-modal").style.display = "flex";
+        document.getElementById("reset-input").focus();
+      }
+
+      function closeResetModal() {
+        document.getElementById("reset-modal").style.display = "none";
+      }
+
+      function confirmReset() {
+        const input = document.getElementById("reset-input");
+        const error = document.getElementById("reset-error");
+        if (input.value !== SITE_PASSWORD) {
+          error.textContent = "Incorrect password.";
+          input.classList.remove("shake");
+          void input.offsetWidth;
+          input.classList.add("shake");
+          input.value = "";
+          input.addEventListener(
+            "animationend",
+            () => input.classList.remove("shake"),
+            { once: true },
+          );
+          return;
+        }
+        closeResetModal();
+        resetAll();
+      }
+
       // ─── STATE ───
       const STORAGE_KEY = "nodejs30_progress";
       let completed = new Set(
@@ -3697,7 +4010,6 @@
 
       // ─── RESET ───
       function resetAll() {
-        if (!confirm("Reset all progress? This cannot be undone.")) return;
         completed.clear();
         localStorage.removeItem(STORAGE_KEY);
         for (let i = 1; i <= 30; i++) {
@@ -3707,6 +4019,7 @@
         updateProgress();
       }
 
+      checkAuth();
       init();
     </script>
   </body>
